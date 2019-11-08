@@ -14,6 +14,8 @@ public class Resources {
     private String CAPABILITY;
     private int AVAILABLE;
     private String MANAGER;
+    
+    //
 
     /**
      * @return the ID

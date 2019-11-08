@@ -7,6 +7,7 @@ package com.mycompany.aptec;
 
 
 public class RESOURCE_LIST {
+    //
     
     public class Nodo{
             
@@ -89,7 +90,7 @@ public class RESOURCE_LIST {
     public void seelist() {
         Nodo temp = Head;
         while (temp != null) {
-            System.out.println(temp.getData());
+            System.out.println(temp.getData().getNAME());
             temp = temp.getNext();
         }
     }

@@ -8,9 +8,11 @@ package com.mycompany.aptec;
 
 public class TASK {
     
+    //
+    
     private int IDTK;
     private String DESCRIPTION;
-    private String COMPLEXITY;
+    private String COMPLEXITY;        
     private String TKMANAGER;
     private String TKTYPE;
     
