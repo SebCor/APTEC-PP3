@@ -3,6 +3,8 @@ package com.mycompany.aptec;
 import java.util.InputMismatchException;
 import java.util.Scanner;
  
+
+//
 public class Prims
 {
     public boolean unsettled[];

@@ -7,11 +7,12 @@ package com.mycompany.aptec;
 
 
 public class TASKNODE {
-    //
+    ////
    
-    private TASK VERTEX;
-    private int ACCWEIGHT;
-    private TASKNODE Next;
+    public TASK VERTEX;
+    public int ACCWEIGHT;
+    public TASKNODE Next;
+    public Matriz_de_adyacencia GRAPH;
 
     public TASKNODE() {
         VERTEX = null;

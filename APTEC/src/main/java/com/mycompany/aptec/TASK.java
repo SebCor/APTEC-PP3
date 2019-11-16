@@ -8,13 +8,15 @@ package com.mycompany.aptec;
 
 public class TASK {
     
-    //
+    ////
     
     private int IDTK;
     private String DESCRIPTION;
     private String COMPLEXITY;        
     private String TKMANAGER;
     private String TKTYPE;
+    private int PRIORITY;
+    private Matriz_de_adyacencia Grafo;
     
     public TASK(){}
     
@@ -87,6 +89,34 @@ public class TASK {
      */
     public void setTKTYPE(String TKTYPE) {
         this.TKTYPE = TKTYPE;
+    }
+
+    /**
+     * @return the PRIORITY
+     */
+    public int getPRIORITY() {
+        return PRIORITY;
+    }
+
+    /**
+     * @param PRIORITY the PRIORITY to set
+     */
+    public void setPRIORITY(int PRIORITY) {
+        this.PRIORITY = PRIORITY;
+    }
+
+    /**
+     * @return the Grafo
+     */
+    public Matriz_de_adyacencia getGrafo() {
+        return Grafo;
+    }
+
+    /**
+     * @param Grafo the Grafo to set
+     */
+    public void setGrafo(Matriz_de_adyacencia Grafo) {
+        this.Grafo = Grafo;
     }
     
     

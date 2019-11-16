@@ -6,7 +6,7 @@
 package com.mycompany.aptec;
 
 import java.util.Scanner;
-
+//
 
 public class MAIN {
     
@@ -70,28 +70,62 @@ public class MAIN {
          
         TASK tarea1 = new TASK();
         tarea1.setIDTK(5);
-        tarea1.setDESCRIPTION("No aplica");
+        tarea1.setDESCRIPTION("Ganar el curso de Datos");
+        tarea1.setCOMPLEXITY(" Dificil");
+        tarea1.setPRIORITY(99);
+
         
         TASK tarea2 = new TASK();
-        tarea2.setIDTK(1);                 // MONTAR LAS TAREAS y SUS ID
-        
+        tarea2.setIDTK(5);
+        tarea2.setDESCRIPTION("Estudiar Algoritmos");
+        tarea2.setCOMPLEXITY("Media");
+        tarea2.setPRIORITY(20);
+
         TASK tarea3 = new TASK();
-        tarea3.setIDTK(2);
+        tarea3.setIDTK(5);
+        tarea3.setDESCRIPTION("Ganar las progras");
+        tarea3.setCOMPLEXITY("Facil con trampa");
+        tarea3.setPRIORITY(81);
+
         
         TASK tarea4 = new TASK();
-        tarea4.setIDTK(3);
+        tarea4.setIDTK(5);
+        tarea4.setDESCRIPTION("Hacer los LABS");
+        tarea4.setCOMPLEXITY("Facil copiando codigo de stack overflow");
+        tarea4.setPRIORITY(30);
+
         
         TASK tarea5 = new TASK();
-        tarea5.setIDTK(4);
+        tarea5.setIDTK(5);
+        tarea5.setDESCRIPTION("Hacer trampa en todas las progras como un puto mentiroso");
+        tarea5.setCOMPLEXITY("Facil si es Anjelica la que revisa");
+        tarea5.setPRIORITY(98);
         
+        TASK tarea6= new TASK();
+        tarea6.setIDTK(5);
+        tarea6.setDESCRIPTION("TAREA CON GRAFO INTERNO");
+        tarea6.setCOMPLEXITY("Media, el segundo examen es una picha");
+        tarea6.setPRIORITY(48);
+
+       
         
 
         
         TaskList.insert(tarea5);
         TaskList.insert(tarea4);
-        TaskList.insert(tarea3);  // montar la lista con todas las tareas del grafo 
+        TaskList.insert(tarea3);  // montar la lista con todas las tareas del grafo  sin un orden de prioridad 
         TaskList.insert(tarea2);
         TaskList.insert(tarea1);
+        TaskList.insert(tarea6);
+        
+         System.out.println("----------------------------------------------------");
+         TaskList.seelist();
+         System.out.println("*                                                  *");
+         System.out.println(" Verdadero orden de tareas para ganar algoritmos");
+         TaskList.sort();
+         TaskList.seelist();
+         System.out.println("----------------------------------------------------");
+        
         
         Matriz_de_adyacencia matriz = new Matriz_de_adyacencia(TaskList.getsize());
         
@@ -149,13 +183,59 @@ public class MAIN {
         matriz.agregar(4, 1,tareaNodo5);
         matriz.agregar(4, 2,tareaNodo5);
         matriz.agregar(4, 3,tareaNodo5);
-        matriz.agregar(4, 4,tareaNodo6);
+        matriz.agregar(4, 4,tareaNodo5);
         
         matriz.imprimir();        // VER LOS VERTICES QUE SE ENCIUENTRAN EN EL GRAFO
         
         Prims prims = new Prims(TaskList.getsize());
         prims.primsAlgorithm(matriz);
+        
+         System.out.println("ARBOL DE EXPAN MIN DE LA VARA");
         prims.printMST(matriz);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //********************************************************************************************************************************
+        //-------------------------------------
+        // meterle el grafo creado (matriz) a una tarea en especifico es decir, la tarea6
+        tarea6.setGrafo(matriz);
+        
+        
+        
+        
+        
+        // FUNCION 3.3------------------------- NO TOTALMENTE TERMINADA---------------------------------------------------------------------------------------------------
+        // TEST DEL ARBOL DE LA FUNCION 3.3   
+        
+        WBSTREE EDT = new WBSTREE();
+        
+        EDT.ADDTASKStoTREE(TaskList, EDT);
+         System.out.println("WBS DEL PROYECTO JUNTO CON SUS TAREAS MADRE");
+        EDT.InOrden(EDT.root);
+        
+        //   INTERFAZ PARA OBTENER EL NODO ESPECIFICO DE LA TAREA Y DE ESA FORMA ACCEDER AL GRAFO Y TORARLE EL PRIM 
+        // Y LUEGO PASAR EL ARBOL DE LA TAREA ESPECIFICA A INTERFAZ
+        
+        
+        
+        
+        
+        
         
         
 	}
