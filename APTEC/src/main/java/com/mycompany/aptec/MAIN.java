@@ -5,6 +5,8 @@
  */
 package com.mycompany.aptec;
 
+import java.util.Scanner;
+
 
 public class MAIN {
     
@@ -12,6 +14,7 @@ public class MAIN {
          
          RESOURCE_LIST listarecurso = new RESOURCE_LIST();
          TASKSLIST TaskList = new TASKSLIST();
+        
            // DEFINIR EL SZE DEL GRAFO
          
          //
@@ -66,7 +69,7 @@ public class MAIN {
          
          
         TASK tarea1 = new TASK();
-        tarea1.setIDTK(0);
+        tarea1.setIDTK(5);
         tarea1.setDESCRIPTION("No aplica");
         
         TASK tarea2 = new TASK();
@@ -92,31 +95,68 @@ public class MAIN {
         
         Matriz_de_adyacencia matriz = new Matriz_de_adyacencia(TaskList.getsize());
         
-      
+        TASKNODE tareaNodo = new TASKNODE();
+        TASKNODE tareaNodo2 = new TASKNODE();
+        TASKNODE tareaNodo3 = new TASKNODE();
+        TASKNODE tareaNodo4 = new TASKNODE();
+        TASKNODE tareaNodo5 = new TASKNODE();
+        TASKNODE tareaNodo6 = new TASKNODE();
+        
+        tareaNodo.setACCWEIGHT(5);
+        tareaNodo2.setACCWEIGHT(3);
+        tareaNodo3.setACCWEIGHT(6);
+        tareaNodo4.setACCWEIGHT(2);
+        tareaNodo5.setACCWEIGHT(9);
+        tareaNodo6.setACCWEIGHT(0);
+        
+        tareaNodo.setVERTEX(tarea1);
                       
-        matriz.agregar(0, 1,tarea1);
-        matriz.agregar(0, 1,tarea1);
-        matriz.agregar(0, 2,tarea1);
-        matriz.agregar(0, 3,tarea1);
+        matriz.agregar(0, 0,tareaNodo6);
+        matriz.agregar(0, 1,tareaNodo);
+        matriz.agregar(0, 2,tareaNodo);
+        matriz.agregar(0, 3,tareaNodo);
+        matriz.agregar(0, 4,tareaNodo);
         
-        matriz.agregar(1, 0,tarea2);
-        matriz.agregar(1, 0,tarea2);
-        matriz.agregar(1, 4,tarea2);
+        tareaNodo2.setVERTEX(tarea2);
         
-        matriz.agregar(2, 0,tarea3);     // METER NODOS / VERTICES AL GRAFO
-        matriz.agregar(2, 3,tarea3);
-        matriz.agregar(2, 4,tarea3);
+        matriz.agregar(1, 0,tareaNodo2);
+        matriz.agregar(1, 1,tareaNodo6);
+        matriz.agregar(1, 2,tareaNodo2);
+        matriz.agregar(1, 3,tareaNodo2);
+        matriz.agregar(1, 4,tareaNodo2);
         
-        matriz.agregar(3, 0,tarea4);
-        matriz.agregar(3, 2,tarea4);
+        tareaNodo3.setVERTEX(tarea3);
         
-        matriz.agregar(4, 1,tarea5);
-        matriz.agregar(4, 2,tarea5);
-        matriz.agregar(4, 4,tarea5);
+        // METER NODOS / VERTICES AL GRAFO
         
+        matriz.agregar(2, 0,tareaNodo3);
+        matriz.agregar(2, 1,tareaNodo3);
+        matriz.agregar(2, 2,tareaNodo6);
+        matriz.agregar(2, 3,tareaNodo3);
+        matriz.agregar(2, 4,tareaNodo3);
         
+        tareaNodo4.setVERTEX(tarea4);
         
-        matriz.imprimir();           // VER LOS VERTICES QUE SE ENCIUENTRAN EN EL GRAFO
+        matriz.agregar(3, 0,tareaNodo4);
+        matriz.agregar(3, 1,tareaNodo4);
+        matriz.agregar(3, 2,tareaNodo4);
+        matriz.agregar(3, 3,tareaNodo6);
+        matriz.agregar(3, 4,tareaNodo4);
+        
+        tareaNodo5.setVERTEX(tarea5);
+        
+        matriz.agregar(4, 0,tareaNodo5);
+        matriz.agregar(4, 1,tareaNodo5);
+        matriz.agregar(4, 2,tareaNodo5);
+        matriz.agregar(4, 3,tareaNodo5);
+        matriz.agregar(4, 4,tareaNodo6);
+        
+        matriz.imprimir();        // VER LOS VERTICES QUE SE ENCIUENTRAN EN EL GRAFO
+        
+        Prims prims = new Prims(TaskList.getsize());
+        prims.primsAlgorithm(matriz);
+        prims.printMST(matriz);
+        
         
 	}
         

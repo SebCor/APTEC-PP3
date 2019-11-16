@@ -10,8 +10,6 @@ package com.mycompany.aptec;
  * @author Sebastian
  */
 public class Matriz_de_adyacencia {
- 
-    
     // SI NO ENTIENDE VER ESTE VIDEO : https://www.youtube.com/watch?v=wrV2idk3iPc
     
     //
@@ -27,36 +25,28 @@ public class Matriz_de_adyacencia {
                
         
     }
-    
-    public void agregar(int i, int j, TASK tarea){
-                TASKNODE ts = new TASKNODE(tarea);
-                matriz[i][j] = ts;
-            }     
+
+    public void agregar(int i, int j, TASKNODE tarea){
+        matriz[i][j] = tarea;
+    }     
     
     
     
 
     
     public void imprimir(){
-        for(int i=0; i< n; i++){
-           for(int j=1; j< n; j++){
+        for(int i=0; i < n; i++){
+           for(int j=0; j< n; j++){
                TASKNODE O = matriz[i][j];
                
                if(O != null){
-                System.out.print(matriz[i][j].getVERTEX().getIDTK() + " " ); 
+                 System.out.print(matriz[i][j].getACCWEIGHT() + " " ); 
                }
                
             }
             System.out.println();
         }
     }
- 
     
     
 }
-    
-    
-    
-    
-    
-
