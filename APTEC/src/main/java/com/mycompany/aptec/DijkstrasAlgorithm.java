@@ -20,9 +20,9 @@ class DijkstrasAlgorithm {
 	// algorithm for a graph represented 
 	// using adjacency matrix 
 	// representation 
-    public void dijkstra(Matriz_de_adyacencia adjacencyMatrix, int startVertex){ 
+    public void dijkstra(int [][] adjacencyMatrix, int startVertex, int finalVertex){ 
         
-        int nVertices = adjacencyMatrix.matriz.length; 
+        int nVertices = adjacencyMatrix.length - 1; 
 
 		// shortestDistances[i] will hold the 
 		// shortest distance from src to i 
@@ -80,7 +80,7 @@ class DijkstrasAlgorithm {
 			// adjacent vertices of the 
 			// picked vertex. 
             for (int vertexIndex = 0; vertexIndex < nVertices-1; vertexIndex++) { 
-		int edgeDistance = adjacencyMatrix.matriz[nearestVertex][vertexIndex]; 
+		int edgeDistance = adjacencyMatrix[nearestVertex][vertexIndex]; 
 				
 		if (edgeDistance > 0 && ((shortestDistance + edgeDistance) < shortestDistances[vertexIndex])){ 
                     parents[vertexIndex] = nearestVertex; 
@@ -89,23 +89,23 @@ class DijkstrasAlgorithm {
             } 
 	} 
 
-	printSolution(startVertex, shortestDistances, parents); 
+	printSolution(startVertex, finalVertex, shortestDistances, parents); 
     } 
 
 	// A utility function to print 
 	// the constructed distances 
 	// array and shortest paths 
-    public void printSolution(int startVertex, int[] distances, int[] parents){ 
+    public void printSolution(int startVertex, int finalVertex, int[] distances, int[] parents){ 
 	int nVertices = distances.length; 
 	System.out.print("Vertex\t Distance\tPath"); 
 		
-	for (int vertexIndex = 0; vertexIndex < nVertices-1; vertexIndex++){ 
-            if (vertexIndex != startVertex){ 
+	for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++){ 
+            if (vertexIndex != startVertex && finalVertex == vertexIndex){
                 System.out.print("\n" + startVertex + " -> "); 
                 System.out.print(vertexIndex + " \t\t "); 
-		System.out.print(distances[vertexIndex] + "\t\t"); 
-                printPath(vertexIndex, parents); 
-		} 
+                System.out.print(distances[vertexIndex] + "\t\t"); 
+                printPath(vertexIndex, parents);
+            } 
 	}
     } 
 

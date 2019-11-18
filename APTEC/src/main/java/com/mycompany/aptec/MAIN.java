@@ -69,40 +69,40 @@ public class MAIN {
          
          
         TASK tarea1 = new TASK();
-        tarea1.setIDTK(1);
+        tarea1.setIDTK(0);
         tarea1.setDESCRIPTION("Ganar el curso de Datos");
         tarea1.setCOMPLEXITY(" Dificil");
         tarea1.setPRIORITY(99);
 
         
         TASK tarea2 = new TASK();
-        tarea2.setIDTK(2);
+        tarea2.setIDTK(1);
         tarea2.setDESCRIPTION("Estudiar Algoritmos");
         tarea2.setCOMPLEXITY("Media");
         tarea2.setPRIORITY(20);
 
         TASK tarea3 = new TASK();
-        tarea3.setIDTK(3);
+        tarea3.setIDTK(2);
         tarea3.setDESCRIPTION("Ganar las progras");
         tarea3.setCOMPLEXITY("Facil con trampa");
         tarea3.setPRIORITY(81);
 
         
         TASK tarea4 = new TASK();
-        tarea4.setIDTK(4);
+        tarea4.setIDTK(3);
         tarea4.setDESCRIPTION("Hacer los LABS");
         tarea4.setCOMPLEXITY("Facil copiando codigo de stack overflow");
         tarea4.setPRIORITY(30);
 
         
         TASK tarea5 = new TASK();
-        tarea5.setIDTK(5);
+        tarea5.setIDTK(4);
         tarea5.setDESCRIPTION("Hacer trampa en todas las progras como un puto mentiroso");
         tarea5.setCOMPLEXITY("Facil si es Anjelica la que revisa");
         tarea5.setPRIORITY(98);
         
         TASK tarea6= new TASK();
-        tarea6.setIDTK(6);
+        tarea6.setIDTK(5);
         tarea6.setDESCRIPTION("TAREA CON GRAFO INTERNO");
         tarea6.setCOMPLEXITY("Media, el segundo examen es una picha");
         tarea6.setPRIORITY(48);
@@ -168,16 +168,13 @@ public class MAIN {
        
         matriz.imprimir();        // VER LOS VERTICES QUE SE ENCIUENTRAN EN EL GRAFO
         
-        Prims prims = new Prims(TaskList.getsize());
-        prims.primsAlgorithm(matriz);
-        
         System.out.println("ARBOL DE EXPAN MIN DE LA VARA");
-        prims.printMST(matriz);
+        Prims prims = new Prims();
+        prims.primMST(matriz.matriz);
         
-        
-         System.out.println(" DIJSKTRA DEL GRAFO : MATRIZ ");
+        System.out.println("DIJSKTRA DEL GRAFO : MATRIZ ");
         DijkstrasAlgorithm minPath = new DijkstrasAlgorithm();
-        minPath.dijkstra(matriz, 1);
+        minPath.dijkstra(matriz.matriz, 0, 2);
         
         
         

@@ -52,8 +52,8 @@ public class Matriz_de_adyacencia {
 
 
   public void imprimir(){
-        for(int i=0; i< n; i++){
-            for(int j=0; j< n; j++){
+        for(int i=0; i< n-1; i++){
+            for(int j=0; j< n-1; j++){
                 System.out.print( matriz[i][j] + "  " );        
             }
             System.out.println();

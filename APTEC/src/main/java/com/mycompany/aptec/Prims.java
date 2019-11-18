@@ -5,112 +5,83 @@ import java.util.Scanner;
  
 
 ////
-public class Prims
-{
-    public boolean unsettled[];
-    public boolean settled[];
-    public int numberofvertices;
-    public int adjacencyMatrix[][];
-    public int key[];
-    public static final int INFINITE = 999;
-    public int parent[];
- 
-    
-    public Prims(int numberofvertices)
-    {
-        this.numberofvertices = numberofvertices;
-        unsettled = new boolean[numberofvertices + 1];
-        settled = new boolean[numberofvertices + 1];
-        adjacencyMatrix = new int[numberofvertices + 1][numberofvertices + 1];
-        key = new int[numberofvertices + 1];
-        parent = new int[numberofvertices + 1];
-    }
- 
-    public int getUnsettledCount(boolean unsettled[])
-    {
-        int count = 0;
-        for (int index = 0; index < unsettled.length; index++)
-        {
-            if (unsettled[index])
-            {
-                count++;
-            }
-        }
-        return count;
-    }
- 
-    public void primsAlgorithm(Matriz_de_adyacencia matriz)
-    {
-        int evaluationVertex;
-        for (int source = 0; source < numberofvertices; source++){
-            for (int destination = 0; destination < numberofvertices; destination++){
-                try{
-                    this.adjacencyMatrix[source][destination] = matriz.matriz[source][destination];
-                }catch(Exception e){
-                    
-                }
-            }
-        }
- 
-        for (int index = 1; index <= numberofvertices; index++)
-        {
-            key[index] = INFINITE;
-        }
-        key[1] = 0;
-        unsettled[1] = true;
-        parent[1] = 1;
- 
-        while (getUnsettledCount(unsettled) != 0)
-        {
-            evaluationVertex = getMimumKeyVertexFromUnsettled(unsettled);
-            unsettled[evaluationVertex] = false;
-            settled[evaluationVertex] = true;
-            evaluateNeighbours(evaluationVertex);
-        }
-    } 
- 
-    private int getMimumKeyVertexFromUnsettled(boolean[] unsettled2)
-    {
-        int min = Integer.MAX_VALUE;
-        int node = 0;
-        for (int vertex = 1; vertex <= numberofvertices; vertex++)
-        {
-            if (unsettled[vertex] == true && key[vertex] < min)
-            {
-                node = vertex;
-                min = key[vertex];
-            }
-        }
-        return node;
-    }
- 
-    public void evaluateNeighbours(int evaluationVertex)
-    {
- 
-        for (int destinationvertex = 1; destinationvertex <= numberofvertices; destinationvertex++)
-        {
-            if (settled[destinationvertex] == false)
-            {
-                if (adjacencyMatrix[evaluationVertex][destinationvertex] != INFINITE)
-                {
-                    if (adjacencyMatrix[evaluationVertex][destinationvertex] < key[destinationvertex])
-                    {
-                        key[destinationvertex] = adjacencyMatrix[evaluationVertex][destinationvertex];
-                        parent[destinationvertex] = evaluationVertex;
-                    }
-                    unsettled[destinationvertex] = true;
-                }
-            }
-        }
-    }
- 
-    public void printMST(Matriz_de_adyacencia matriz)
-    {
-        System.out.println("SOURCE  : DESTINATION = WEIGHT");
-        for (int vertex = 2; vertex <= numberofvertices; vertex++)
-        {
-            System.out.println(vertex + "\t:\t" + parent[vertex] +"\t=\t"+ adjacencyMatrix[vertex - 1][parent[vertex]-1]);
-        }
-    }
+public class Prims{ 
+	// Number of vertices in the graph 
+	private static final int V = 5; 
 
+	// A utility function to find the vertex with minimum key 
+	// value, from the set of vertices not yet included in MST 
+	int minKey(int key[], Boolean mstSet[]) 
+	{ 
+		// Initialize min value 
+		int min = Integer.MAX_VALUE, min_index = -1; 
+
+		for (int v = 0; v < V; v++) 
+			if (mstSet[v] == false && key[v] < min) { 
+				min = key[v]; 
+				min_index = v; 
+			} 
+
+		return min_index; 
+	} 
+
+	// A utility function to print the constructed MST stored in 
+	// parent[] 
+	void printMST(int parent[], int graph[][]) 
+	{ 
+		System.out.println("Edge \tWeight"); 
+		for (int i = 1; i < V; i++) 
+			System.out.println(parent[i] + " - " + i + "\t" + graph[i][parent[i]]); 
+	} 
+
+	// Function to construct and print MST for a graph represented 
+	// using adjacency matrix representation 
+	void primMST(int graph[][]) 
+	{ 
+		// Array to store constructed MST 
+		int parent[] = new int[V]; 
+
+		// Key values used to pick minimum weight edge in cut 
+		int key[] = new int[V]; 
+
+		// To represent set of vertices not yet included in MST 
+		Boolean mstSet[] = new Boolean[V]; 
+
+		// Initialize all keys as INFINITE 
+		for (int i = 0; i < V; i++) { 
+			key[i] = Integer.MAX_VALUE; 
+			mstSet[i] = false; 
+		} 
+
+		// Always include first 1st vertex in MST. 
+		key[0] = 0; // Make key 0 so that this vertex is 
+		// picked as first vertex 
+		parent[0] = -1; // First node is always root of MST 
+
+		// The MST will have V vertices 
+		for (int count = 0; count < V - 1; count++) { 
+			// Pick thd minimum key vertex from the set of vertices 
+			// not yet included in MST 
+			int u = minKey(key, mstSet); 
+
+			// Add the picked vertex to the MST Set 
+			mstSet[u] = true; 
+
+			// Update key value and parent index of the adjacent 
+			// vertices of the picked vertex. Consider only those 
+			// vertices which are not yet included in MST 
+			for (int v = 0; v < V; v++) 
+
+				// graph[u][v] is non zero only for adjacent vertices of m 
+				// mstSet[v] is false for vertices not yet included in MST 
+				// Update the key only if graph[u][v] is smaller than key[v] 
+				if (graph[u][v] != 0 && mstSet[v] == false && graph[u][v] < key[v]) { 
+					parent[v] = u; 
+					key[v] = graph[u][v]; 
+				} 
+		} 
+
+		// print the constructed MST 
+		printMST(parent, graph); 
+	} 
 }
