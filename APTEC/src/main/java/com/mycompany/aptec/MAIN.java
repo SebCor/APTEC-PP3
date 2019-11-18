@@ -136,7 +136,7 @@ public class MAIN {
         TASKNODE tareaNodo5 = new TASKNODE();
         TASKNODE tareaNodo6 = new TASKNODE();
         
-        tareaNodo.setACCWEIGHT(5);
+        tareaNodo.setACCWEIGHT(11);
         tareaNodo2.setACCWEIGHT(3);
         tareaNodo3.setACCWEIGHT(6);
         tareaNodo4.setACCWEIGHT(2);
@@ -144,7 +144,7 @@ public class MAIN {
         tareaNodo6.setACCWEIGHT(0);
         
         tareaNodo.setVERTEX(tarea1);
-                      
+                       
         matriz.agregar(0, 0,tareaNodo6);
         matriz.agregar(0, 1,tareaNodo);
         matriz.agregar(0, 2,tareaNodo);
@@ -190,10 +190,11 @@ public class MAIN {
         Prims prims = new Prims(TaskList.getsize());
         prims.primsAlgorithm(matriz);
         
-         System.out.println("ARBOL DE EXPAN MIN DE LA VARA");
+        System.out.println("ARBOL DE EXPAN MIN DE LA VARA");
         prims.printMST(matriz);
         
-        
+        DijkstrasAlgorithm minPath = new DijkstrasAlgorithm();
+        minPath.dijkstra(matriz, 2);
         
         
         
@@ -225,7 +226,7 @@ public class MAIN {
         WBSTREE EDT = new WBSTREE();
         
         EDT.ADDTASKStoTREE(TaskList, EDT);
-         System.out.println("WBS DEL PROYECTO JUNTO CON SUS TAREAS MADRE");
+        System.out.println("WBS DEL PROYECTO JUNTO CON SUS TAREAS MADRE");
         EDT.InOrden(EDT.root);
         
         //   INTERFAZ PARA OBTENER EL NODO ESPECIFICO DE LA TAREA Y DE ESA FORMA ACCEDER AL GRAFO Y TORARLE EL PRIM 
