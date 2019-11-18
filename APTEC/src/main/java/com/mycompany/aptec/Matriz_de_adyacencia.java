@@ -12,41 +12,52 @@ package com.mycompany.aptec;
 public class Matriz_de_adyacencia {
     // SI NO ENTIENDE VER ESTE VIDEO : https://www.youtube.com/watch?v=wrV2idk3iPc
     
-    /////
+    ////////
     
     public int n;
-    public TASKNODE [][] matriz;
+    public int [][] matriz;
     
   
     public Matriz_de_adyacencia(int n) {
         this.n = n;
-        matriz = new TASKNODE[n][n];
+        matriz = new int[n][n];
         //se inicializa matriz en el size de n
                
         
     }
 
-    public void agregar(int i, int j, TASKNODE tarea){
-        matriz[i][j] = tarea;
+    public void agregar(TASKNODE SOURCE, TASKNODE DESTINY, int Weight){
+        
+        matriz[SOURCE.getVERTEX().getIDTK()][DESTINY.getVERTEX().getIDTK()] = Weight;
     }     
     
     
     
 
     
-    public void imprimir(){
-        for(int i=0; i < n; i++){
-           for(int j=0; j< n; j++){
-               TASKNODE O = matriz[i][j];
-               
-               if(O != null){
-                 System.out.print(matriz[i][j].getACCWEIGHT() + " " ); 
-               }
-               
+//    public void imprimir(){
+//        for(int i=0; i < n; i++){
+//           for(int j=0; j< n; j++){
+//               int O = matriz[i][j];
+//               
+//             
+//                 System.out.print(matriz[i][j] + " " ); 
+//               }
+//               
+//            }
+//            System.out.println();
+//        }
+//    }
+    
+
+
+  public void imprimir(){
+        for(int i=0; i< n; i++){
+            for(int j=0; j< n; j++){
+                System.out.print( matriz[i][j] + "  " );        
             }
             System.out.println();
-        }
+        }  
     }
-    
-    
 }
+    

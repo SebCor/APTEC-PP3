@@ -7,7 +7,7 @@ package com.mycompany.aptec;
 
 
 public class TASKNODE {
-    ////
+    //////
    
     public TASK VERTEX;
     public int ACCWEIGHT;

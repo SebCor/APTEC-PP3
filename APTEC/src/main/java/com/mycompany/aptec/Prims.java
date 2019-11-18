@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
  
 
-//
+////
 public class Prims
 {
     public boolean unsettled[];
@@ -45,7 +45,7 @@ public class Prims
         for (int source = 0; source < numberofvertices; source++){
             for (int destination = 0; destination < numberofvertices; destination++){
                 try{
-                    this.adjacencyMatrix[source][destination] = matriz.matriz[source][destination].getACCWEIGHT();
+                    this.adjacencyMatrix[source][destination] = matriz.matriz[source][destination];
                 }catch(Exception e){
                     
                 }

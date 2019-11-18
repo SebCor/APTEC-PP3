@@ -10,7 +10,7 @@ package com.mycompany.aptec;
  * @author ronye
  */
 
-
+///
 class DijkstrasAlgorithm { 
     
     private static final int NO_PARENT = -1; 
@@ -80,7 +80,7 @@ class DijkstrasAlgorithm {
 			// adjacent vertices of the 
 			// picked vertex. 
             for (int vertexIndex = 0; vertexIndex < nVertices-1; vertexIndex++) { 
-		int edgeDistance = adjacencyMatrix.matriz[nearestVertex][vertexIndex].getACCWEIGHT(); 
+		int edgeDistance = adjacencyMatrix.matriz[nearestVertex][vertexIndex]; 
 				
 		if (edgeDistance > 0 && ((shortestDistance + edgeDistance) < shortestDistances[vertexIndex])){ 
                     parents[vertexIndex] = nearestVertex; 

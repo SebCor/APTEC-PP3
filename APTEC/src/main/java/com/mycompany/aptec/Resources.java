@@ -7,7 +7,7 @@ package com.mycompany.aptec;
 
 
 public class Resources {
-    ///
+    /////
     private int ID;
     private String NAME;
     private String TYPE;
